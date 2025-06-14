@@ -1,0 +1,1180 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TWDD - 실전으로 증명된 마케팅 대행사</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><linearGradient id="grad"><stop offset="0%" stop-color="rgba(255,255,255,0.1)"/><stop offset="100%" stop-color="rgba(255,255,255,0.05)"/></linearGradient></defs><circle cx="200" cy="200" r="150" fill="url(%23grad)"/><circle cx="800" cy="800" r="200" fill="url(%23grad)"/><circle cx="900" cy="200" r="100" fill="url(%23grad)"/></svg>') center/cover;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            color: white;
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About Section */
+        .about {
+            background: #f8f9fa;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            background: white;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transform: translate(30px, -30px);
+        }
+
+        .portfolio-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .portfolio-card .metrics {
+            background: rgba(255,255,255,0.2);
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .portfolio-card .metrics strong {
+            color: #ffd700;
+        }
+
+        /* Marketing Test Section */
+        .marketing-test {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .marketing-test::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><linearGradient id="grad2"><stop offset="0%" stop-color="rgba(255,255,255,0.1)"/><stop offset="100%" stop-color="rgba(255,255,255,0.05)"/></linearGradient></defs><circle cx="100" cy="100" r="80" fill="url(%23grad2)"/><circle cx="900" cy="200" r="120" fill="url(%23grad2)"/><circle cx="200" cy="800" r="100" fill="url(%23grad2)"/></svg>') center/cover;
+            opacity: 0.3;
+        }
+
+        .marketing-test .section-title,
+        .marketing-test .section-subtitle {
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .test-container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .test-preview {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .test-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .test-preview h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .test-preview p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .test-features {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+            text-align: left;
+            display: inline-block;
+        }
+
+        .test-features li {
+            padding: 0.5rem 0;
+            font-size: 1rem;
+            opacity: 0.95;
+        }
+
+        .btn-test {
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            color: white;
+            padding: 18px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-test:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+            z-index: 10;
+            background: none;
+            border: none;
+            padding: 5px;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: #000;
+        }
+
+        /* Process Section */
+        .process {
+            background: #f8f9fa;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .process-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .process-number {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: white;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: #f8f9fa;
+            padding: 2.5rem;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 4rem;
+            color: #667eea;
+            opacity: 0.3;
+        }
+
+        .testimonial-card p {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .final-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: #ecf0f1;
+        }
+
+        .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #3498db;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #34495e;
+            padding-top: 2rem;
+            color: #95a5a6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .portfolio-grid,
+            .features-grid,
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>실전으로 증명된 마케팅, TWDD</h1>
+                <p>로컬 비즈니스부터 이커머스, 프랜차이즈까지<br>TWDD는 진짜 수익을 만드는 마케팅을 해왔습니다.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">무료 전략 진단 받기</a>
+                    <a href="#portfolio" class="btn btn-secondary">포트폴리오 보기</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">성과 중심 실전형 마케팅 대행사</h2>
+            <p class="section-subtitle">다양한 업종과 브랜드의 전환을 만들어온 경험을 바탕으로 수치 기반의 마케팅을 제공합니다</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>데이터 기반 전략</h3>
+                    <p>ROAS, 전환율, 리드당 비용 등 명확한 수치로 성과를 측정하고 최적화합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>업종별 전문성</h3>
+                    <p>이커머스부터 로컬 비즈니스까지, 각 업종의 특성을 정확히 파악한 맞춤 전략을 제공합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>실전 검증된 방법론</h3>
+                    <p>이론이 아닌 실제 현장에서 검증된 마케팅 방법론으로 확실한 성과를 보장합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <h2 class="section-title">업종별 실제 성과</h2>
+            <p class="section-subtitle">다양한 업종에서 만들어낸 실제 성과를 확인해보세요</p>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <h3>🛒 이커머스 브랜드몰</h3>
+                    <div class="metrics">
+                        <strong>ROAS 6.5배</strong> 달성<br>
+                        키워드 광고 + 리마케팅 전략
+                    </div>
+                    <p>제품별 전환 키워드 분석을 통해 매출에 직접적으로 기여하는 트래픽 확보</p>
+                </div>
+
+                <div class="portfolio-card">
+                    <h3>🍗 프랜차이즈 본사 & 가맹점</h3>
+                    <div class="metrics">
+                        가맹 상담 전환률 <strong>24%</strong><br>
+                        지역별 맞춤 랜딩페이지 운영
+                    </div>
+                    <p>블로그 콘텐츠와 후기 기반 유입 설계로 신뢰도 높은 잠재고객 유치</p>
+                </div>
+
+                <div class="portfolio-card">
+                    <h3>💄 뷰티·로컬 매장</h3>
+                    <div class="metrics">
+                        예약률 <strong>90% 이상</strong><br>
+                        네이버 키워드 + 인스타 릴스
+                    </div>
+                    <p>당근마켓 프로필, 숨고 후기 등 다채널 마케팅으로 지역 밀착형 고객 확보</p>
+                </div>
+
+                <div class="portfolio-card">
+                    <h3>🧱 철거, 이사, 도배 업체</h3>
+                    <div class="metrics">
+                        월 리드 <strong>50건 이상</strong><br>
+                        견적 전환률 15% (CPC 7,000원)
+                    </div>
+                    <p>파워링크 최적화와 숨고, 블로그 연동으로 고품질 견적 문의 지속 확보</p>
+                </div>
+
+                <div class="portfolio-card">
+                    <h3>🏥 병원 마케팅</h3>
+                    <div class="metrics">
+                        신규 환자 <strong>월 120명</strong><br>
+                        예약 전환률 35% (네이버 예약)
+                    </div>
+                    <p>지역 키워드 최적화와 네이버 플레이스 관리로 신뢰할 수 있는 의료진 브랜딩</p>
+                </div>
+
+                <div class="portfolio-card">
+                    <h3>🎓 교육/학원 마케팅</h3>
+                    <div class="metrics">
+                        클릭률 <strong>3.2%</strong><br>
+                        전화 전환률 30%
+                    </div>
+                    <p>맘카페 마케팅과 지역광고 결합, 상담 스크립트 제작으로 높은 등록률 달성</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketing Test Section -->
+    <section class="marketing-test" id="marketing-test">
+        <div class="container">
+            <h2 class="section-title">우리 브랜드 마케팅, 지금 어느 단계일까요?</h2>
+            <p class="section-subtitle">간단한 6가지 질문으로 현재 마케팅 상태를 진단해보세요</p>
+            
+            <div class="test-container">
+                <div class="test-preview">
+                    <div class="test-icon">📊</div>
+                    <h3>마케팅 점수 테스트</h3>
+                    <p>우리 브랜드의 마케팅 현황을 객관적으로 진단하고<br>맞춤형 개선 방향을 제시받아보세요</p>
+                    <ul class="test-features">
+                        <li>✅ 6개 질문으로 간단 진단</li>
+                        <li>✅ 4가지 유형별 맞춤 전략 제안</li>
+                        <li>✅ 결과 공유 및 저장 가능</li>
+                    </ul>
+                    <button class="btn btn-test" onclick="openTestModal()">무료 진단 시작하기</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="process">
+        <div class="container">
+            <h2 class="section-title">우리가 일하는 방식</h2>
+            <p class="section-subtitle">체계적이고 검증된 프로세스로 확실한 성과를 만들어냅니다</p>
+            
+            <div class="process-grid">
+                <div class="process-card">
+                    <div class="process-number">1</div>
+                    <h3>전략 설계</h3>
+                    <p>업종과 예산에 최적화된 맞춤 마케팅 전략을 설계합니다</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-number">2</div>
+                    <h3>키워드 & 콘텐츠</h3>
+                    <p>실제 전환이 발생하는 키워드와 콘텐츠를 테스트하고 최적화합니다</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-number">3</div>
+                    <h3>전환 추적</h3>
+                    <p>리드 발생부터 전화 상담, 최종 계약까지 전 과정을 추적합니다</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-number">4</div>
+                    <h3>통합 마케팅</h3>
+                    <p>숨고, 당근마켓, 블로그, 카카오채널 등을 통합한 마케팅 생태계 구축</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">고객 후기</h2>
+            <p class="section-subtitle">실제 고객들이 경험한 TWDD의 마케팅 성과</p>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>광고비만 쓰던 시절에서 수익이 나는 구조로 바뀌었어요. 매출이 3배 늘었는데 광고비는 오히려 줄었습니다.</p>
+                    <div class="testimonial-author">- 이커머스 대표 김○○</div>
+                </div>
+                <div class="testimonial-card">
+                    <p>본사보다 더 디테일하고 실전적이었어요. 가맹점 사장님들이 직접 문의 전화를 주시니까 확실히 다르구나 느꼈습니다.</p>
+                    <div class="testimonial-author">- 프랜차이즈 본부 박○○</div>
+                </div>
+                <div class="testimonial-card">
+                    <p>전화가 매일 울립니다. 이런 게 마케팅이었군요. 예약 잡기가 바빠서 행복한 고민을 하고 있어요.</p>
+                    <div class="testimonial-author">- 뷰티샵 원장 최○○</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta" id="contact">
+        <div class="container">
+            <h2>지금 우리 업종에 맞는 전략을 받아보세요</h2>
+            <p>무료 진단을 통해 현재 마케팅의 문제점을 파악하고, 개선 방향을 제시해드립니다.</p>
+            <div class="cta-buttons">
+                <a href="mailto:contact@twdd.co.kr" class="btn btn-primary">무료 진단 요청</a>
+                <a href="#portfolio" class="btn btn-secondary">성공 사례 보기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>TWDD</h4>
+                    <p>성과 중심 실전형 마케팅 대행사</p>
+                    <p>진짜 수익을 만드는 마케팅</p>
+                </div>
+                <div class="footer-section">
+                    <h4>연락처</h4>
+                    <p>이메일: contact@twdd.co.kr</p>
+                    <p>전화: 1588-0000</p>
+                </div>
+                <div class="footer-section">
+                    <h4>서비스</h4>
+                    <p>키워드 광고 관리</p>
+                    <p>SNS 마케팅</p>
+                    <p>콘텐츠 마케팅</p>
+                    <p>통합 마케팅 전략</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TWDD Co. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Marketing Test Modal -->
+    <div class="modal" id="testModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeTestModal()">&times;</button>
+            
+            <div class="header">
+                <h1>당신의 마케팅 점수는?</h1>
+                <p>지금 바로 셀프로 진단해보세요! 📊</p>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="modalProgressFill"></div>
+            </div>
+
+            <div class="content">
+                <!-- Question Cards -->
+                <div class="question-card active" data-question="0">
+                    <div class="question-number">1</div>
+                    <div class="question-title">우리 브랜드는 온라인 검색 시 얼마나 노출되나요?</div>
+                    <div class="options">
+                        <button class="option" data-score="0">검색해도 우리 브랜드가 안 보여요 😅</button>
+                        <button class="option" data-score="1">가끔 뒤쪽 페이지에서 보여요</button>
+                        <button class="option" data-score="2">첫 페이지에 간혹 노출돼요</button>
+                        <button class="option" data-score="3">검색하면 바로 상위에 나와요 🎯</button>
+                    </div>
+                </div>
+
+                <div class="question-card" data-question="1">
+                    <div class="question-number">2</div>
+                    <div class="question-title">최근 1달간 마케팅 예산은 얼마인가요?</div>
+                    <div class="options">
+                        <button class="option" data-score="0">마케팅 예산이 뭔가요? 💸</button>
+                        <button class="option" data-score="1">10만원 미만으로 조금씩</button>
+                        <button class="option" data-score="2">10~50만원 정도 써봤어요</button>
+                        <button class="option" data-score="3">50만원 이상 체계적으로 투자</button>
+                    </div>
+                </div>
+
+                <div class="question-card" data-question="2">
+                    <div class="question-number">3</div>
+                    <div class="question-title">어떤 채널을 운영하고 있나요?</div>
+                    <div class="options">
+                        <button class="option" data-score="0">특별히 운영하는 건 없어요</button>
+                        <button class="option" data-score="1">인스타그램만 가끔 올려요 📱</button>
+                        <button class="option" data-score="2">인스타 + 네이버/카카오 하나 더</button>
+                        <button class="option" data-score="3">블로그, SNS, 광고 등 여러 채널 운영</button>
+                    </div>
+                </div>
+
+                <div class="question-card" data-question="3">
+                    <div class="question-number">4</div>
+                    <div class="question-title">고객 문의/예약은 어떻게 받고 있나요?</div>
+                    <div class="options">
+                        <button class="option" data-score="0">전화로만 받아요</button>
+                        <button class="option" data-score="1">카카오톡 정도만 추가로</button>
+                        <button class="option" data-score="2">온라인 예약 시스템이 있어요</button>
+                        <button class="option" data-score="3">다양한 경로로 체계적으로 관리 📋</button>
+                    </div>
+                </div>
+
+                <div class="question-card" data-question="4">
+                    <div class="question-number">5</div>
+                    <div class="question-title">마케팅 콘텐츠(후기, 포트폴리오 등)가 있나요?</div>
+                    <div class="options">
+                        <button class="option" data-score="0">특별한 콘텐츠는 없어요</button>
+                        <button class="option" data-score="1">고객 후기 몇 개 정도만</button>
+                        <button class="option" data-score="2">포트폴리오나 사례들 좀 있어요</button>
+                        <button class="option" data-score="3">체계적으로 콘텐츠를 제작해요 ✨</button>
+                    </div>
+                </div>
+
+                <div class="question-card" data-question="5">
+                    <div class="question-number">6</div>
+                    <div class="question-title">마케팅 성과를 분석하고 있나요?</div>
+                    <div class="options">
+                        <button class="option" data-score="0">성과 분석이 뭔지 모르겠어요</button>
+                        <button class="option" data-score="1">대충 느낌으로만 파악해요</button>
+                        <button class="option" data-score="2">간단한 통계는 봐요</button>
+                        <button class="option" data-score="3">데이터를 보고 전략을 수정해요 📈</button>
+                    </div>
+                </div>
+
+                <!-- Result Screen -->
+                <div class="result-screen" id="modalResultScreen">
+                    <div class="result-badge">마케팅 진단 결과</div>
+                    <div class="result-score" id="modalResultScore">0점</div>
+                    <div class="result-type" id="modalResultType">결과 유형</div>
+                    <div class="result-description" id="modalResultDescription">
+                        <!-- 결과 내용이 여기에 들어갑니다 -->
+                    </div>
+                    <div class="result-actions">
+                        <a href="mailto:contact@twdd.co.kr" class="btn-cta">무료 전략 진단 받기</a>
+                        <button class="btn-share" onclick="shareModalResult()">결과 공유하기</button>
+                    </div>
+                    <button class="btn-restart" onclick="restartModalTest()">다시 테스트하기</button>
+                </div>
+
+                <!-- Navigation -->
+                <div class="navigation" id="modalNavigation">
+                    <button class="btn btn-prev" id="modalPrevBtn" onclick="prevModalQuestion()" disabled>이전</button>
+                    <button class="btn btn-next" id="modalNextBtn" onclick="nextModalQuestion()" disabled>다음</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="modalToast">결과가 복사되었습니다!</div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animation effect
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-on-scroll');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .portfolio-card, .process-card, .testimonial-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add hover effects for cards
+        document.querySelectorAll('.portfolio-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+
+        // Marketing Test Modal Functionality
+        let modalCurrentQuestion = 0;
+        let modalAnswers = [];
+        const modalTotalQuestions = 6;
+
+        const modalResultTypes = {
+            A: {
+                name: "감성형 자영업자",
+                emoji: "🌱",
+                description: "아직 마케팅의 첫 걸음을 내딛지 않으셨네요!",
+                details: "걱정하지 마세요. 모든 성공한 사업가들도 처음엔 이 단계를 거쳤어요. 지금이야말로 체계적인 마케팅을 시작할 때입니다. 작은 것부터 시작해서 차근차근 브랜드를 키워나가면 됩니다!",
+                recommendation: "🎯 추천 전략: 기본적인 온라인 존재감 구축 + 고객 후기 수집부터 시작"
+            },
+            B: {
+                name: "SNS 중심 수동형",
+                emoji: "📱",
+                description: "인스타그램은 열심히 하는데 뭔가 아쉬우시죠?",
+                details: "SNS 감각은 있으시지만, 좀 더 체계적인 접근이 필요해요. 현재의 SNS 활동을 바탕으로 다른 채널도 확장하고, 실제 매출로 연결되는 전략을 세워봐야 할 때입니다.",
+                recommendation: "🎯 추천 전략: SNS 최적화 + 네이버/블로그 연동으로 검색 노출 확대"
+            },
+            C: {
+                name: "광고 중심 단기형",
+                emoji: "💡",
+                description: "광고비는 쓰고 있는데 효과가 애매하시죠?",
+                details: "마케팅에 대한 이해도는 있으시지만, 좀 더 체계적인 분석과 최적화가 필요해요. 현재 투자하고 있는 광고비가 제대로 된 수익으로 돌아올 수 있도록 전략을 다듬어야 합니다.",
+                recommendation: "🎯 추천 전략: 성과 분석 체계 구축 + ROI 최적화로 광고비 효율 극대화"
+            },
+            D: {
+                name: "구조형 성장 운영자",
+                emoji: "🚀",
+                description: "이미 마케팅의 기본기는 갖춰져 있으시네요!",
+                details: "현재 수준에서 한 단계 더 성장하려면 전문적인 전략과 고급 기법들이 필요합니다. 이미 구축된 기반을 바탕으로 더 큰 성과를 만들어낼 수 있는 단계입니다.",
+                recommendation: "🎯 추천 전략: 고급 마케팅 전략 + 브랜딩 강화로 시장 리더십 확보"
+            }
+        };
+
+        // 모달 관련 함수들을 전역으로 정의
+        window.openTestModal = function() {
+            console.log('Opening test modal...'); // 디버깅용
+            const modal = document.getElementById('testModal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                resetModalTest();
+            } else {
+                console.error('Modal not found!');
+            }
+        };
+
+        window.closeTestModal = function() {
+            console.log('Closing test modal...'); // 디버깅용
+            const modal = document.getElementById('testModal');
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        };
+
+        window.resetModalTest = function() {
+            modalCurrentQuestion = 0;
+            modalAnswers = [];
+            
+            const resultScreen = document.getElementById('modalResultScreen');
+            const navigation = document.getElementById('modalNavigation');
+            
+            if (resultScreen) resultScreen.classList.remove('active');
+            if (navigation) navigation.style.display = 'flex';
+            
+            // Reset all question cards
+            document.querySelectorAll('#testModal .question-card').forEach(card => {
+                card.style.display = 'block';
+                card.classList.remove('active');
+            });
+            
+            // Reset all options
+            document.querySelectorAll('#testModal .option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            showModalQuestion(0);
+        };
+
+        function updateModalProgress() {
+            const progress = ((modalCurrentQuestion + 1) / modalTotalQuestions) * 100;
+            const progressFill = document.getElementById('modalProgressFill');
+            if (progressFill) {
+                progressFill.style.width = progress + '%';
+            }
+        }
+
+        function showModalQuestion(index) {
+            document.querySelectorAll('#testModal .question-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            
+            const targetCard = document.querySelector(`#testModal [data-question="${index}"]`);
+            if (targetCard) {
+                targetCard.classList.add('active');
+            }
+            
+            updateModalProgress();
+            updateModalNavigation();
+        }
+
+        function updateModalNavigation() {
+            const prevBtn = document.getElementById('modalPrevBtn');
+            const nextBtn = document.getElementById('modalNextBtn');
+            
+            if (prevBtn) {
+                prevBtn.disabled = modalCurrentQuestion === 0;
+            }
+            
+            if (nextBtn) {
+                if (modalCurrentQuestion === modalTotalQuestions - 1) {
+                    nextBtn.textContent = '결과 보기';
+                    nextBtn.disabled = modalAnswers[modalCurrentQuestion] === undefined;
+                } else {
+                    nextBtn.textContent = '다음';
+                    nextBtn.disabled = modalAnswers[modalCurrentQuestion] === undefined;
+                }
+            }
+        }
+
+        function selectModalOption(questionIndex, score, element) {
+            modalAnswers[questionIndex] = score;
+            
+            const currentCard = document.querySelector(`#testModal [data-question="${questionIndex}"]`);
+            if (currentCard) {
+                currentCard.querySelectorAll('.option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+            }
+            
+            element.classList.add('selected');
+            updateModalNavigation();
+        }
+
+        window.nextModalQuestion = function() {
+            if (modalCurrentQuestion < modalTotalQuestions - 1) {
+                modalCurrentQuestion++;
+                showModalQuestion(modalCurrentQuestion);
+            } else {
+                showModalResult();
+            }
+        };
+
+        window.prevModalQuestion = function() {
+            if (modalCurrentQuestion > 0) {
+                modalCurrentQuestion--;
+                showModalQuestion(modalCurrentQuestion);
+            }
+        };
+
+        function calculateModalResult() {
+            const totalScore = modalAnswers.reduce((sum, score) => sum + (score || 0), 0);
+            let resultType;
+            
+            if (totalScore <= 4) {
+                resultType = 'A';
+            } else if (totalScore <= 8) {
+                resultType = 'B';
+            } else if (totalScore <= 13) {
+                resultType = 'C';
+            } else {
+                resultType = 'D';
+            }
+            
+            return { totalScore, resultType };
+        }
+
+        function showModalResult() {
+            const { totalScore, resultType } = calculateModalResult();
+            const result = modalResultTypes[resultType];
+            
+            const navigation = document.getElementById('modalNavigation');
+            if (navigation) navigation.style.display = 'none';
+            
+            document.querySelectorAll('#testModal .question-card').forEach(card => {
+                card.style.display = 'none';
+            });
+            
+            const scoreElement = document.getElementById('modalResultScore');
+            const typeElement = document.getElementById('modalResultType');
+            const descElement = document.getElementById('modalResultDescription');
+            const resultScreen = document.getElementById('modalResultScreen');
+            const progressFill = document.getElementById('modalProgressFill');
+            
+            if (scoreElement) scoreElement.textContent = `${totalScore}점`;
+            if (typeElement) typeElement.textContent = `${result.emoji} ${result.name}`;
+            
+            if (descElement) {
+                const descriptionHtml = `
+                    <h3>${result.description}</h3>
+                    <p>${result.details}</p>
+                    <p><strong>${result.recommendation}</strong></p>
+                `;
+                descElement.innerHTML = descriptionHtml;
+            }
+            
+            if (resultScreen) resultScreen.classList.add('active');
+            if (progressFill) progressFill.style.width = '100%';
+        }
+
+        window.shareModalResult = function() {
+            const { totalScore, resultType } = calculateModalResult();
+            const result = modalResultTypes[resultType];
+            
+            const shareText = `🎯 나의 마케팅 점수: ${totalScore}점\n${result.emoji} ${result.name}\n\n${result.description}\n\nTWDD 마케팅 진단 테스트 결과입니다!`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: '마케팅 진단 테스트 결과',
+                    text: shareText,
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(shareText).then(() => {
+                    showModalToast('결과가 복사되었습니다!');
+                });
+            }
+        };
+
+        function showModalToast(message) {
+            const toast = document.getElementById('modalToast');
+            if (toast) {
+                toast.textContent = message;
+                toast.classList.add('show');
+                
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            }
+        }
+
+        window.restartModalTest = function() {
+            resetModalTest();
+        };
+
+        // Event listeners for modal options
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('#testModal .option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const questionIndex = parseInt(this.closest('.question-card').dataset.question);
+                    const score = parseInt(this.dataset.score);
+                    selectModalOption(questionIndex, score, this);
+                });
+            });
+
+            // Close modal when clicking outside
+            document.getElementById('testModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeTestModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
